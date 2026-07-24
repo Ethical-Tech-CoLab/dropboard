@@ -85,9 +85,17 @@ contradicts several of DropBoard's stated principles, so it's a demo shortcut, n
 - **Do not** use GitHub-as-storage as the general backend — it fails ephemerality, real-time,
   concurrency, and file-size requirements while still needing a server.
 
-## Status of current scaffold
+## Status of current scaffolds
 
-The repo currently contains the **Supabase** backend scaffold (`supabase/`, backlog #2/#3).
-Nothing here has been ripped out. If we choose Cloudflare, the front-end session helpers
-(`web/src/lib/session.js`) stay largely the same — only the backend implementation behind the
-create/join/end endpoints and the realtime transport change.
+Three backends now live side by side so the choice can be made from working code, not just this
+doc. Nothing has been ripped out — pick one.
+
+| Path | What it is |
+|---|---|
+| [`../supabase/`](../supabase/) | The current design: Postgres + RLS + Realtime + Storage + Edge Functions (backlog #2/#3). |
+| [`../cloudflare/`](../cloudflare/) | Recommended alternative: Workers + Durable Objects (WebSocket sync + TTL) + R2. Same platform as the proxy. |
+| [`../prototypes/github-store/`](../prototypes/github-store/) | Proof of concept of the GitHub/Gist option — to make its limits concrete. Demo only. |
+
+The browser client is shaped the same across Supabase (`web/src/lib/session.js`) and Cloudflare
+(`cloudflare/examples/client.js`), so switching backends changes the implementation behind
+create/join/end and the realtime transport — not the front-end shape.

@@ -1,0 +1,27 @@
+# DropBoard — Cloudflare backend (Workers + Durable Objects + R2).
+# Copy to wrangler.toml and edit, then: wrangler secret put SESSION_SECRET && wrangler deploy
+name = "dropboard-backend"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+# One Durable Object instance per session = the ephemeral "room" (state + WebSocket sync + TTL).
+[[durable_objects.bindings]]
+name = "BOARDS"
+class_name = "BoardRoom"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["BoardRoom"]
+
+# Object storage for dropped files (create the bucket: wrangler r2 bucket create dropboard-drops).
+[[r2_buckets]]
+binding = "DROPS"
+bucket_name = "dropboard-drops"
+
+[vars]
+# Lock CORS to the Pages origin in production.
+ALLOWED_ORIGIN = "https://alx-du.github.io"
+MAX_FILE_BYTES = "26214400" # 25 MB
+
+# Secret (do NOT put here): wrangler secret put SESSION_SECRET
+# Used to HMAC-sign per-session tokens.

@@ -1,0 +1,17 @@
+{
+  "name": "dropboard-backend-cloudflare",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DropBoard backend on Cloudflare Workers + Durable Objects + R2 (alternative to Supabase).",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240925.0",
+    "typescript": "^5.5.0",
+    "wrangler": "^3.78.0"
+  }
+}
