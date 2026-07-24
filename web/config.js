@@ -20,7 +20,9 @@ window.DROPBOARD_CONFIG = {
   SUPABASE_ANON_KEY: "YOUR-PUBLIC-ANON-KEY",
 
   // --- AI proxy (wired, features deferred this iteration) ---
-  // Point at your already-deployed pages-ai-proxy; add this app's origin to its ALLOWED_ORIGINS.
-  AI_PROXY_URL: "https://YOUR-PROXY/v1/chat/completions",
-  AI_MODEL: "openai/gpt-4o-mini",
+  // TEMPORARY (option A): reusing War-Games' live Cloudflare quick-tunnel proxy. This URL is
+  // EPHEMERAL — it rotates whenever the tunnel restarts, and will then break. Swap in ETC's
+  // stable proxy URL when available. See docs/quickstart-for-ai-proxy.md.
+  AI_PROXY_URL: "https://rss-junior-ireland-scenes.trycloudflare.com/v1/chat/completions",
+  AI_MODEL: "gpt-4o-mini", // matches the model War-Games sends to this same proxy
 };
