@@ -8,3 +8,6 @@ dist/
 .DS_Store
 .vscode/
 .idea/
+
+# per-user Cloudflare deploy config (copy of wrangler.toml.example)
+cloudflare/wrangler.toml

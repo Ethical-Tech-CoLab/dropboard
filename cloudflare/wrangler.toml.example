@@ -11,7 +11,8 @@ class_name = "BoardRoom"
 
 [[migrations]]
 tag = "v1"
-new_classes = ["BoardRoom"]
+# SQLite-backed Durable Objects — required on the free plan (and the current default).
+new_sqlite_classes = ["BoardRoom"]
 
 # Object storage for dropped files (create the bucket: wrangler r2 bucket create dropboard-drops).
 [[r2_buckets]]
