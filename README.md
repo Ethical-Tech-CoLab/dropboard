@@ -101,18 +101,19 @@ _Updated 2026-07-24 — **live and working end-to-end.**_
   - [`cloudflare/`](cloudflare/) — Workers + **Durable Objects** (WebSocket sync + TTL) + **R2** files. **Deployed & live**, wired as the default.
   - [`supabase/`](supabase/) — Postgres + **RLS** + Realtime + Storage + Edge Functions. Scaffolded alternative.
   - [`prototypes/github-store/`](prototypes/github-store/) — proof of concept of the "store in GitHub/Gist" idea (demo only; not ephemeral/real-time).
-- **AI proxy** — [`pages-ai-proxy`](https://github.com/Ethical-Tech-CoLab/pages-ai-proxy) configuration wired; product AI features deferred.
-- **Docs & tracking** — [docs/PRODUCT_DESIGN.md](docs/PRODUCT_DESIGN.md) (front-end/back-end guidelines + architecture), [docs/BACKEND_OPTIONS.md](docs/BACKEND_OPTIONS.md), [docs/BACKLOG.md](docs/BACKLOG.md). The backlog is mirrored as GitHub issues.
+- **AI proxy** — [`pages-ai-proxy`](https://github.com/Ethical-Tech-CoLab/pages-ai-proxy) wired via config (currently a temporary tunnel — see [docs/quickstart-for-ai-proxy.md](docs/quickstart-for-ai-proxy.md)); product AI features deferred.
+- **Docs & tracking** — [PRODUCT_DESIGN](docs/PRODUCT_DESIGN.md) (front-end/back-end guidelines + architecture) · [BACKEND_OPTIONS](docs/BACKEND_OPTIONS.md) · [BACKLOG](docs/BACKLOG.md) · [quickstart-for-ai-proxy](docs/quickstart-for-ai-proxy.md) · [COMPETITIVE_LANDSCAPE](docs/COMPETITIVE_LANDSCAPE.md) · teaching write-up: [BUILD_LOG](docs/teaching/BUILD_LOG.md) + [EXECUTIVE_REPORT](docs/teaching/EXECUTIVE_REPORT.md). Backlog is mirrored as GitHub issues (on the original `alx-du/dropboard` repo — this fork has Issues disabled).
 
 ### Repository layout
 
 ```
-web/          static SPA (GitHub Pages) — index.html, src/app.js, src/lib/*
-cloudflare/   Workers + Durable Objects + R2 backend
-supabase/     Postgres + RLS + Edge Functions backend
-prototypes/   github-store proof of concept
-docs/         design brief, backend options, backlog
-.github/      Pages deploy workflow
+web/            static SPA (GitHub Pages) — index.html, src/app.js, src/lib/*
+cloudflare/     Workers + Durable Objects + R2 backend (deployed)
+supabase/       Postgres + RLS + Edge Functions backend (scaffolded alternative)
+prototypes/     github-store proof of concept
+docs/           design, backend options, backlog, ai-proxy quickstart, competitive landscape
+docs/teaching/  build log + executive report for the write-up
+.github/        Pages deploy workflow
 ```
 
 ### Run it

@@ -35,7 +35,7 @@ Pages, created **14 backlog issues** + **issue #15 "pick the backend."**
 - **Repo (current):** https://github.com/Ethical-Tech-CoLab/dropboard (a fork; deploys the live site and has the proxy origin allowlisted). Original: https://github.com/alx-du/dropboard.
 - **Live site (GitHub Pages, deployed & green):** https://ethical-tech-colab.github.io/dropboard/
 - **Issues:** 14 backlog (P0/P1/P2) + #15 pick-a-backend decision — on the **original** repo (https://github.com/alx-du/dropboard/issues); the fork has Issues disabled.
-- **Key docs:** `docs/PRODUCT_DESIGN.md`, `docs/BACKEND_OPTIONS.md`, `docs/BACKLOG.md`, `docs/quickstart-for-ai-proxy.md`, `docs/teaching/BUILD_LOG.md`
+- **Key docs:** `docs/PRODUCT_DESIGN.md`, `docs/BACKEND_OPTIONS.md`, `docs/BACKLOG.md`, `docs/quickstart-for-ai-proxy.md`, `docs/COMPETITIVE_LANDSCAPE.md`, `docs/teaching/BUILD_LOG.md`
 
 ## 4. Architecture (as-built)
 
