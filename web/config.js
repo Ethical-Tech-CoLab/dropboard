@@ -13,7 +13,7 @@ window.DROPBOARD_CONFIG = {
   BACKEND: "cloudflare",
 
   // --- Cloudflare backend (Workers + Durable Objects + R2) — see cloudflare/ ---
-  CF_BACKEND_URL: "https://dropboard-backend.YOUR-SUBDOMAIN.workers.dev",
+  CF_BACKEND_URL: "https://dropboard-backend.alex-x-du.workers.dev",
 
   // --- Supabase backend (used when BACKEND === "supabase") — see supabase/ ---
   SUPABASE_URL: "https://YOUR-PROJECT.supabase.co",
