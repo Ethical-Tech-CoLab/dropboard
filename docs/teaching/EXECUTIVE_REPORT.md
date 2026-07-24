@@ -42,10 +42,11 @@ Pages, created **14 backlog issues** + **issue #15 "pick the backend."**
 - **Frontend:** static single-page app in `web/` (vanilla JS, no build step), deployed to GitHub
   Pages via `.github/workflows/deploy-pages.yml`. Backend-agnostic via a one-line switch
   `DROPBOARD_CONFIG.BACKEND` in `web/config.js`, with adapters in `web/src/lib/backends/`.
-- **Backends — three scaffolded, one to be chosen (issue #15):**
-  - **Cloudflare** (`cloudflare/`, wired default): Workers + one **Durable Object per session**
-    (WebSocket realtime + in-memory room state + TTL `alarm()` for true ephemerality) + **R2**
-    for files. Same platform as the AI proxy.
+- **Backend — Cloudflare chosen & DEPLOYED** (issue #15 effectively settled); two others scaffolded:
+  - **Cloudflare** (`cloudflare/`, wired default, **LIVE** at `dropboard-backend.alex-x-du.workers.dev`):
+    Workers + one **Durable Object per session** (WebSocket realtime + in-memory room state + TTL
+    `alarm()` for true ephemerality) + **R2** for files. Same platform as the AI proxy. Create/join
+    and CORS from the Pages origin verified working.
   - **Supabase** (`supabase/`): Postgres + **RLS** (per-session JWT carrying a `session_id`
     claim) + Realtime + Storage + Edge Functions.
   - **GitHub-store** (`prototypes/github-store/`): proof-of-concept only — Node proxy over a
@@ -68,15 +69,18 @@ Pages, created **14 backlog issues** + **issue #15 "pick the backend."**
 
 ## 6. Current status & known gaps (be honest about these in the piece)
 
-- ✅ Frontend + deploy pipeline live; docs + issues in place.
-- ⚠️ **Not runnable end-to-end yet** — no backend is deployed; the board loads but create/join
-  needs a backend URL in `web/config.js`.
-- ⚠️ **Cloudflare Worker TypeScript is untype-checked** locally (no `tsc`/Deno in the env); needs
-  `npm install && npm run typecheck` in `cloudflare/`.
-- ⚠️ **Supabase adapter is unverified in-browser** (no live project yet).
-- ⚠️ AI features deferred — nothing calls the proxy in the UI yet.
-- **Recommended next step for a credible demo:** deploy the Cloudflare backend so a real drop
-  syncs across two devices.
+- ✅ **Runs end-to-end.** Frontend on Pages + Cloudflare backend deployed; create → join → drop
+  → live-sync verified (including CORS from the Pages origin). The "drop a file, see it on my
+  phone" demo is now real, not staged.
+- ✅ **Cloudflare Worker is type-checked** (`npm run typecheck` passes; a real `.ts`-import bug was
+  caught and fixed before deploy — a good teaching beat about verifying AI-written code).
+- ⚠️ **Supabase adapter is unverified in-browser** (Cloudflare was chosen; Supabase left as a
+  scaffolded alternative).
+- ⚠️ **AI proxy is on a temporary tunnel** (Option A) and AI features are still deferred — nothing
+  in the UI calls the proxy yet.
+- **Deploy specifics:** backend at `dropboard-backend.alex-x-du.workers.dev`; getting there
+  required three one-time Cloudflare account steps (enable R2, use `new_sqlite_classes` for DOs on
+  the free plan, create a `workers.dev` subdomain) — all resolved.
 
 ## 7. The teaching deliverable
 

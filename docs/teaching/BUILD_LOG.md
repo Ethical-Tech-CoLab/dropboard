@@ -95,7 +95,7 @@
 6. `[03:15]` CTA (15s).
 
 ## Production checklist
-- [ ] Deploy the Cloudflare backend so the sync demo is real (not mocked).
+- [x] Deploy the Cloudflare backend so the sync demo is real (not mocked). ✅ live at `dropboard-backend.alex-x-du.workers.dev`; create/join/sync verified.
 - [ ] Export the full Claude Code transcript; pull 3–4 exact prompt/response excerpts.
 - [ ] Capture: live site, Actions success, issues board, BACKEND_OPTIONS table.
 - [ ] Record the two-device sync GIF.

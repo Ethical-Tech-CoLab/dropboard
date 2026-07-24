@@ -93,12 +93,13 @@ To stay focused, DropBoard deliberately does **not** try to be:
 
 ## Progress
 
-_Updated 2026-07-24 — moved from brief to a working scaffold._
+_Updated 2026-07-24 — **live and working end-to-end.**_
 
-- **Frontend** — a functional single-page app (create/join a board, drop text · links · files, live sync, end session) deploying to **GitHub Pages**: **https://ethical-tech-colab.github.io/dropboard/**. It's backend-agnostic — one switch in [`web/config.js`](web/config.js) points it at a backend.
-- **Backends (two implementations, pick one — see [docs/BACKEND_OPTIONS.md](docs/BACKEND_OPTIONS.md)):**
-  - [`cloudflare/`](cloudflare/) — Workers + **Durable Objects** (WebSocket sync + TTL) + **R2** files. Wired as the default.
-  - [`supabase/`](supabase/) — Postgres + **RLS** + Realtime + Storage + Edge Functions.
+- **✅ It runs.** Open **https://ethical-tech-colab.github.io/dropboard/**, start a board, join from another device, and drop text/links/files that sync in real time.
+- **Frontend** — a functional single-page app (create/join a board, drop text · links · files, live sync, end session) on **GitHub Pages**. Backend-agnostic — one switch in [`web/config.js`](web/config.js) points it at a backend.
+- **Backend (deployed):**
+  - [`cloudflare/`](cloudflare/) — Workers + **Durable Objects** (WebSocket sync + TTL) + **R2** files. **Deployed & live**, wired as the default.
+  - [`supabase/`](supabase/) — Postgres + **RLS** + Realtime + Storage + Edge Functions. Scaffolded alternative.
   - [`prototypes/github-store/`](prototypes/github-store/) — proof of concept of the "store in GitHub/Gist" idea (demo only; not ephemeral/real-time).
 - **AI proxy** — [`pages-ai-proxy`](https://github.com/Ethical-Tech-CoLab/pages-ai-proxy) configuration wired; product AI features deferred.
 - **Docs & tracking** — [docs/PRODUCT_DESIGN.md](docs/PRODUCT_DESIGN.md) (front-end/back-end guidelines + architecture), [docs/BACKEND_OPTIONS.md](docs/BACKEND_OPTIONS.md), [docs/BACKLOG.md](docs/BACKLOG.md). The backlog is mirrored as GitHub issues.
@@ -120,4 +121,4 @@ It's static — no build. Set `CF_BACKEND_URL` (or Supabase config) in [`web/con
 
 ## Status
 
-🚧 **Early development.** Frontend + deploy pipeline are live; both backends are scaffolded and await a deployment plus the **pick-a-backend** decision (tracked in the GitHub issues). This README doubles as the design brief — feedback welcome via an issue.
+🟢 **Working demo.** Frontend on GitHub Pages + the Cloudflare backend are deployed and the full create → join → drop → live-sync → end loop works end-to-end. Supabase remains a scaffolded alternative (the **pick-a-backend** decision, issue #15, is effectively settled on Cloudflare). AI features are still deferred. This README doubles as the design brief — feedback welcome via an issue.
