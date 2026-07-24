@@ -1,0 +1,17 @@
+# Supabase project config. `project_id` is a local label; link to a real project with
+# `supabase link --project-ref <ref>`.
+project_id = "dropboard"
+
+# All four functions do their OWN authorization (create/join are public; end/cleanup verify a
+# token themselves), so the platform's automatic JWT gate is turned off.
+[functions.create-session]
+verify_jwt = false
+
+[functions.join-session]
+verify_jwt = false
+
+[functions.end-session]
+verify_jwt = false
+
+[functions.cleanup]
+verify_jwt = false
