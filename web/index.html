@@ -15,37 +15,48 @@
       <p class="tagline">A shared drop-space in your browser. No accounts, no installs.</p>
     </header>
 
-    <section class="card" aria-labelledby="status-h">
-      <h2 id="status-h">Scaffold status</h2>
-      <p>This is the static Pages scaffold. The full app is in the backlog — this page confirms
-        the delivery path (GitHub Pages) and configuration are wired.</p>
-      <ul class="checks" id="checks">
-        <li data-check="supabase">Supabase config…</li>
-        <li data-check="proxy">AI proxy config…</li>
-      </ul>
+    <!-- Landing: create or join -->
+    <section id="landing" class="card">
+      <button id="createBtn" class="primary big">Start a board</button>
+      <p class="or">or join with a code</p>
+      <div class="row">
+        <input id="joinCode" placeholder="e.g. TIGER-4821" autocomplete="off" spellcheck="false" />
+        <button id="joinBtn">Join</button>
+      </div>
+    </section>
+
+    <!-- Board -->
+    <section id="board" class="card" hidden>
+      <div class="board-head">
+        <div>
+          <span class="muted">Board code</span>
+          <strong id="codeLabel" class="code"></strong>
+          <button id="copyCode" class="link">copy</button>
+        </div>
+        <div class="board-actions">
+          <button id="endBtn" class="danger" hidden>End session</button>
+          <button id="leaveBtn" class="link">Leave</button>
+        </div>
+      </div>
+
+      <div class="composer-row">
+        <input id="composer" placeholder="Type a note or paste a link…  (⌘/Ctrl+Enter)" autocomplete="off" />
+        <button id="dropBtn" class="primary">Drop</button>
+        <label class="file-btn">📎<input id="fileInput" type="file" multiple hidden /></label>
+      </div>
+      <p class="hint">Drag files anywhere onto the board, or paste from the clipboard.</p>
+
+      <ul id="items" class="items"></ul>
     </section>
 
     <footer>
-      <p>See <a href="https://github.com/">the repo</a> · docs/PRODUCT_DESIGN.md · docs/BACKLOG.md</p>
+      <p>docs/PRODUCT_DESIGN.md · docs/BACKEND_OPTIONS.md · <a href="https://github.com/alx-du/dropboard">repo</a></p>
     </footer>
   </main>
 
+  <div id="toast" class="toast" hidden></div>
+
   <script src="./config.js"></script>
-  <script>
-    // Minimal readiness check — reports whether runtime config has been filled in.
-    (function () {
-      var cfg = window.DROPBOARD_CONFIG || {};
-      function set(name, ok, detail) {
-        var el = document.querySelector('[data-check="' + name + '"]');
-        if (!el) return;
-        el.textContent = (ok ? "✅ " : "⚠️ ") + detail;
-        el.className = ok ? "ok" : "warn";
-      }
-      var supaOk = cfg.SUPABASE_URL && !cfg.SUPABASE_URL.includes("YOUR-PROJECT");
-      set("supabase", supaOk, supaOk ? "Supabase configured" : "Supabase not configured (edit web/config.js)");
-      var proxyOk = cfg.AI_PROXY_URL && !cfg.AI_PROXY_URL.includes("YOUR-PROXY");
-      set("proxy", proxyOk, proxyOk ? "AI proxy configured (features deferred)" : "AI proxy not configured (edit web/config.js)");
-    })();
-  </script>
+  <script type="module" src="./src/app.js"></script>
 </body>
 </html>

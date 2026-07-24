@@ -91,6 +91,33 @@ To stay focused, DropBoard deliberately does **not** try to be:
 - [ ] Free hosting limits: what file size cap is sustainable without a payment model?
 - [ ] Do we need any lightweight moderation/abuse reporting for public codes that leak?
 
+## Progress
+
+_Updated 2026-07-24 — moved from brief to a working scaffold._
+
+- **Frontend** — a functional single-page app (create/join a board, drop text · links · files, live sync, end session) deploying to **GitHub Pages**: **https://alx-du.github.io/dropboard/**. It's backend-agnostic — one switch in [`web/config.js`](web/config.js) points it at a backend.
+- **Backends (two implementations, pick one — see [docs/BACKEND_OPTIONS.md](docs/BACKEND_OPTIONS.md)):**
+  - [`cloudflare/`](cloudflare/) — Workers + **Durable Objects** (WebSocket sync + TTL) + **R2** files. Wired as the default.
+  - [`supabase/`](supabase/) — Postgres + **RLS** + Realtime + Storage + Edge Functions.
+  - [`prototypes/github-store/`](prototypes/github-store/) — proof of concept of the "store in GitHub/Gist" idea (demo only; not ephemeral/real-time).
+- **AI proxy** — [`pages-ai-proxy`](https://github.com/Ethical-Tech-CoLab/pages-ai-proxy) configuration wired; product AI features deferred.
+- **Docs & tracking** — [docs/PRODUCT_DESIGN.md](docs/PRODUCT_DESIGN.md) (front-end/back-end guidelines + architecture), [docs/BACKEND_OPTIONS.md](docs/BACKEND_OPTIONS.md), [docs/BACKLOG.md](docs/BACKLOG.md). The backlog is mirrored as GitHub issues.
+
+### Repository layout
+
+```
+web/          static SPA (GitHub Pages) — index.html, src/app.js, src/lib/*
+cloudflare/   Workers + Durable Objects + R2 backend
+supabase/     Postgres + RLS + Edge Functions backend
+prototypes/   github-store proof of concept
+docs/         design brief, backend options, backlog
+.github/      Pages deploy workflow
+```
+
+### Run it
+
+It's static — no build. Set `CF_BACKEND_URL` (or Supabase config) in [`web/config.js`](web/config.js), deploy a backend (see the backend's README), then serve `web/` (e.g. `python3 -m http.server` inside it) or use the live Pages URL above.
+
 ## Status
 
-🚧 **Concept / pre-development.** This README doubles as the design brief. Feedback welcome — open an issue or drop a note on the board (once it exists).
+🚧 **Early development.** Frontend + deploy pipeline are live; both backends are scaffolded and await a deployment plus the **pick-a-backend** decision (tracked in the GitHub issues). This README doubles as the design brief — feedback welcome via an issue.
