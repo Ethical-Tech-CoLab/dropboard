@@ -7,8 +7,8 @@
 //
 // The Worker forwards internal routes here: /create /join /end /items /ws. File bytes live in
 // R2 and are handled by the Worker; only their metadata becomes an item here.
-import { Env, Item, Meta } from "./types.ts";
-import { mintToken, verifyToken, bearer } from "./token.ts";
+import { Env, Item, Meta } from "./types";
+import { mintToken, verifyToken, bearer } from "./token";
 
 export class BoardRoom {
   private state: DurableObjectState;

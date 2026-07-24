@@ -12,10 +12,10 @@
 //
 // State + realtime live in the BoardRoom Durable Object (keyed by code). File BYTES live in R2
 // and are handled here; their metadata is registered as an item in the room.
-import { Env } from "./types.ts";
-import { BoardRoom } from "./board-room.ts";
-import { makeAccessCode, json, corsHeaders } from "./util.ts";
-import { verifyToken, bearer } from "./token.ts";
+import { Env } from "./types";
+import { BoardRoom } from "./board-room";
+import { makeAccessCode, json, corsHeaders } from "./util";
+import { verifyToken, bearer } from "./token";
 
 export { BoardRoom };
 
