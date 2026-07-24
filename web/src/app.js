@@ -118,18 +118,7 @@ function init() {
     toast(`Backend "${backend.backendName}" is not configured — edit web/config.js`, true);
   }
 
-  const CODE_RE = /^[A-Z0-9](?:[A-Z0-9-]{4,22})[A-Z0-9]$/; // 6–24, letters/digits/hyphens
-
   $("createBtn").onclick = () => enter(backend.createSession(4), "creator");
-  $("createCustomBtn").onclick = () => {
-    const code = $("customCode").value.trim().toUpperCase();
-    if (!CODE_RE.test(code)) {
-      return toast("Code must be 6–24 letters, numbers, or hyphens", true);
-    }
-    enter(backend.createSession(4, code), "creator");
-  };
-  $("customCode").addEventListener("keydown", (e) => { if (e.key === "Enter") $("createCustomBtn").click(); });
-
   $("joinBtn").onclick = () => {
     const code = $("joinCode").value.trim().toUpperCase();
     if (code) enter(backend.joinSession(code), "participant");

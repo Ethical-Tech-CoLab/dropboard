@@ -28,26 +28,9 @@ export default {
     const parts = url.pathname.split("/").filter(Boolean); // ["sessions", code?, action?, key?]
     if (parts[0] !== "sessions") return json({ error: "not found" }, 404, origin);
 
-    // POST /sessions -> create a board.
-    // Body may include an optional custom `access_code`; otherwise a random one is generated.
+    // POST /sessions -> create (retry on the rare code collision)
     if (parts.length === 1 && req.method === "POST") {
       const bodyText = await req.text();
-      let body: { access_code?: unknown } = {};
-      try { body = bodyText ? JSON.parse(bodyText) : {}; } catch { body = {}; }
-      const custom = typeof body.access_code === "string" ? body.access_code.trim().toUpperCase() : "";
-
-      if (custom) {
-        // 6–24 chars, letters/digits/hyphens, no leading/trailing hyphen.
-        if (!/^[A-Z0-9](?:[A-Z0-9-]{4,22})[A-Z0-9]$/.test(custom)) {
-          return json({ error: "code must be 6–24 characters: letters, numbers, or hyphens" }, 400, origin);
-        }
-        const room = env.BOARDS.get(env.BOARDS.idFromName(custom));
-        const res = await room.fetch(new Request(`https://do/${custom}/create`, { method: "POST", body: bodyText }));
-        if (res.status === 409) return json({ error: "that code is already in use — try another" }, 409, origin);
-        return withCors(res, origin);
-      }
-
-      // Random code, retrying on the rare collision.
       for (let attempt = 0; attempt < 5; attempt++) {
         const code = makeAccessCode();
         const room = env.BOARDS.get(env.BOARDS.idFromName(code));
