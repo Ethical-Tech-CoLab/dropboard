@@ -29,6 +29,11 @@ export default {
     if (parts[0] !== "sessions") return json({ error: "not found" }, 404, origin);
 
     // POST /sessions -> create (retry on the rare code collision)
+    // NOTE (drift): the currently DEPLOYED Worker also accepts an optional custom `access_code`
+    // on create (vanity codes). That frontend feature was reverted in commit 71cc53b, but the
+    // live Worker was not redeployed, so it still supports it harmlessly. This source is
+    // random-only; the next `wrangler deploy` will bring the live Worker back in line. When the
+    // custom-code feature is restored, re-add validation here and deploy frontend + Worker together.
     if (parts.length === 1 && req.method === "POST") {
       const bodyText = await req.text();
       for (let attempt = 0; attempt < 5; attempt++) {
