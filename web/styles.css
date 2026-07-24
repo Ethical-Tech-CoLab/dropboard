@@ -54,6 +54,8 @@ button:hover { border-color: var(--accent); }
 .danger { color: #fff; background: var(--danger); border-color: var(--danger); }
 .link { border: none; background: none; color: var(--accent); padding: .3rem; }
 .or { text-align: center; color: var(--muted); margin: 1rem 0 .6rem; font-size: .9rem; }
+.sub { font-weight: 400; opacity: .8; font-size: .85em; }
+.sep { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0 .5rem; }
 .row { display: flex; gap: .5rem; }
 .row input { flex: 1; }
 

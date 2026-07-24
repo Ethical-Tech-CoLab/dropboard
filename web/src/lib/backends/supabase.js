@@ -8,7 +8,9 @@ import { sessionClient } from "../supabase.js";
 
 const BUCKET = "drops";
 
-export const createSession = (ttlHours = 4) => fnCreate(ttlHours);
+// NOTE: custom access codes need matching support in the create-session Edge Function;
+// for now the Supabase path ignores accessCode and always returns a generated code.
+export const createSession = (ttlHours = 4, _accessCode) => fnCreate(ttlHours);
 export const joinSession = (code) => fnJoin(code);
 export const endSession = ({ token }) => fnEnd(token);
 

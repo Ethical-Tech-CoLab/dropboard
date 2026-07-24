@@ -13,8 +13,10 @@ async function call(path, { method = "POST", token, body } = {}) {
   return data;
 }
 
-export function createSession(ttlHours = 4) {
-  return call("/sessions", { body: { ttl_hours: ttlHours } });
+export function createSession(ttlHours = 4, accessCode) {
+  const body = { ttl_hours: ttlHours };
+  if (accessCode) body.access_code = accessCode; // optional custom/vanity code
+  return call("/sessions", { body });
 }
 
 export function joinSession(code) {
