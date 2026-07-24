@@ -9,9 +9,9 @@
 > See [EXECUTIVE_REPORT.md](./EXECUTIVE_REPORT.md) for the full context.
 
 **Live artifacts to link throughout:**
-- Repo: https://github.com/alx-du/dropboard
-- Live site: https://alx-du.github.io/dropboard/
-- Backlog issues: https://github.com/alx-du/dropboard/issues
+- Repo (fork, current): https://github.com/Ethical-Tech-CoLab/dropboard
+- Live site: https://ethical-tech-colab.github.io/dropboard/
+- Backlog issues: https://github.com/alx-du/dropboard/issues _(issues live on the original repo — the fork has Issues disabled)_
 - Design docs: [PRODUCT_DESIGN.md](../PRODUCT_DESIGN.md) · [BACKEND_OPTIONS.md](../BACKEND_OPTIONS.md) · [quickstart-for-ai-proxy.md](../quickstart-for-ai-proxy.md)
 
 ---
@@ -24,7 +24,7 @@
 - [ ] `[SCREENSHOT/GIF: the deployed board with items syncing]`
 
 ## 1. Start from a brief, not a blank page
-**Commit:** [`1513cec`](https://github.com/alx-du/dropboard/commit/1513cec) · **Lesson: give the agent a design brief to reason against.**
+**Commit:** [`1513cec`](https://github.com/Ethical-Tech-CoLab/dropboard/commit/1513cec) · **Lesson: give the agent a design brief to reason against.**
 
 - [ ] Show the starting point: a README that doubles as a product brief (problem, features, non-goals, principles).
 - [ ] Teaching point: a good brief front-loads *constraints* (ephemeral, zero-friction, device-agnostic) so every later decision has something to check against.
@@ -40,7 +40,7 @@
 - [ ] Takeaway box: **"Tell the agent it's allowed to ask questions, and answer them honestly. This is where architecture actually happens."**
 
 ## 3. Ship the skeleton before the features
-**Commit:** [`1513cec`](https://github.com/alx-du/dropboard/commit/1513cec) · **Lesson: get a deployable, empty thing live on day one.**
+**Commit:** [`1513cec`](https://github.com/Ethical-Tech-CoLab/dropboard/commit/1513cec) · **Lesson: get a deployable, empty thing live on day one.**
 
 - [ ] What shipped first: a static page deployed to GitHub Pages via Actions + the backlog filed as 14 GitHub issues — *before* any feature.
 - [ ] `[SCREENSHOT: the Actions "deploy succeeded" run + the issues board]`
@@ -48,7 +48,7 @@
 - [ ] Note the honesty: the agent couldn't reach GitHub at first (no `gh`); show how that was resolved (keychain token + REST API). Real friction, real fix.
 
 ## 4. Make the AI defend its choices ⭐⭐ (the star lesson)
-**Commits:** [`2765f7d`](https://github.com/alx-du/dropboard/commit/2765f7d) → [`e0b358f`](https://github.com/alx-du/dropboard/commit/e0b358f) → [`a08822a`](https://github.com/alx-du/dropboard/commit/a08822a) · **Lesson: use the agent to explore the design space, not just emit code.**
+**Commits:** [`2765f7d`](https://github.com/Ethical-Tech-CoLab/dropboard/commit/2765f7d) → [`e0b358f`](https://github.com/Ethical-Tech-CoLab/dropboard/commit/e0b358f) → [`a08822a`](https://github.com/Ethical-Tech-CoLab/dropboard/commit/a08822a) · **Lesson: use the agent to explore the design space, not just emit code.**
 
 - [ ] Setup: the agent scaffolded a Supabase backend (schema, RLS, per-session JWT, Edge Functions).
 - [ ] The pivot — your prompt (paste verbatim): *"is there another option instead of using supabase? can Github API be used to store small things like links, small files, text, etc, in our repo temporarily?"*
@@ -58,14 +58,14 @@
 - [ ] Takeaway box: **"When the AI proposes X, ask 'what else, and why not?' You get an architect, not a code vending machine."**
 
 ## 5. Wire something real (and swappable)
-**Commit:** [`7179d7e`](https://github.com/alx-du/dropboard/commit/7179d7e) · **Lesson: build for the decision you haven't made yet.**
+**Commit:** [`7179d7e`](https://github.com/Ethical-Tech-CoLab/dropboard/commit/7179d7e) · **Lesson: build for the decision you haven't made yet.**
 
 - [ ] What shipped: a functional board UI (create/join, drop text·links·files, live sync, end) behind a one-line backend switch in `web/config.js`.
 - [ ] `[GIF: dropping a link on one device, appearing on another]` *(record after deploying a backend)*
 - [ ] Teaching point: a thin adapter layer let the app stay runnable while the backend decision stayed open (tracked in [issue #15](https://github.com/alx-du/dropboard/issues/15)).
 
 ## 6. Reuse, don't rebuild
-**Commit:** [`fd22177`](https://github.com/alx-du/dropboard/commit/fd22177) · **Lesson: copy configuration, not infrastructure.**
+**Commit:** [`fd22177`](https://github.com/Ethical-Tech-CoLab/dropboard/commit/fd22177) · **Lesson: copy configuration, not infrastructure.**
 
 - [ ] The task: use an existing deployed AI proxy without recreating it — by reading another repo (War-Games) and copying only its *config pattern*.
 - [ ] Result: [quickstart-for-ai-proxy.md](../quickstart-for-ai-proxy.md) — one URL in config, one origin on the proxy, no key in the browser.

@@ -1,5 +1,5 @@
 // Shared HTTP helpers: CORS + JSON responses.
-// In production, set ALLOWED_ORIGIN to the exact Pages origin (e.g. https://alx-du.github.io).
+// In production, set ALLOWED_ORIGIN to the exact Pages origin (e.g. https://ethical-tech-colab.github.io).
 
 const ORIGIN = Deno.env.get("ALLOWED_ORIGIN") ?? "*";
 

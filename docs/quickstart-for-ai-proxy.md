@@ -69,7 +69,7 @@ Same pattern, adapted:
 3. **Allow this origin on the proxy** (proxy side — do *not* rebuild it). Add the Pages origin to
    the proxy's `ALLOWED_ORIGINS` env var:
    ```
-   ALLOWED_ORIGINS = https://alx-du.github.io
+   ALLOWED_ORIGINS = https://ethical-tech-colab.github.io
    ```
 
 That's the whole integration: one URL in config, one origin on the proxy.
@@ -77,7 +77,7 @@ That's the whole integration: one URL in config, one origin on the proxy.
 ## Verify
 
 - **Runtime override / smoke test:** open the app with `?proxy=` pointed at a proxy, e.g.
-  `https://alx-du.github.io/dropboard/?proxy=https://<sub>.trycloudflare.com/v1/chat/completions`.
+  `https://ethical-tech-colab.github.io/dropboard/?proxy=https://<sub>.trycloudflare.com/v1/chat/completions`.
 - **Direct curl** (no key needed — the proxy injects it):
   ```bash
   curl -sS -X POST "https://YOUR-PROXY/v1/chat/completions" \
@@ -92,7 +92,7 @@ That's the whole integration: one URL in config, one origin on the proxy.
 
 - [ ] Replace `AI_PROXY_URL` in `web/config.js` with the real deployed proxy URL.
 - [ ] Prefer a stable `*.workers.dev` URL over an ephemeral `trycloudflare.com` tunnel.
-- [ ] Add `https://alx-du.github.io` to the proxy's `ALLOWED_ORIGINS`.
+- [ ] Add `https://ethical-tech-colab.github.io` to the proxy's `ALLOWED_ORIGINS`.
 - [ ] (Optional) Pin `ALLOWED_MODELS` on the proxy for public deployments.
 - [ ] Decide the first AI feature that will actually call `aiChat()` (currently deferred — see
   backlog #14 and PRODUCT_DESIGN.md §5).

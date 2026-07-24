@@ -20,7 +20,7 @@ bucket_name = "dropboard-drops"
 
 [vars]
 # Lock CORS to the Pages origin in production.
-ALLOWED_ORIGIN = "https://alx-du.github.io"
+ALLOWED_ORIGIN = "https://ethical-tech-colab.github.io"
 MAX_FILE_BYTES = "26214400" # 25 MB
 
 # Secret (do NOT put here): wrangler secret put SESSION_SECRET

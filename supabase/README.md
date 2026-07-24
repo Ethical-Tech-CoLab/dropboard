@@ -37,7 +37,7 @@ supabase db push
 #    (Dashboard > Project Settings > API > JWT Settings > JWT Secret) so the Supabase API
 #    verifies our minted tokens. SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY are auto-injected.
 supabase secrets set JWT_SECRET="<PROJECT_JWT_SECRET>"
-supabase secrets set ALLOWED_ORIGIN="https://alx-du.github.io"   # lock CORS to the Pages origin
+supabase secrets set ALLOWED_ORIGIN="https://ethical-tech-colab.github.io"   # lock CORS to the Pages origin
 
 # 3. Deploy the functions
 supabase functions deploy create-session

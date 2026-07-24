@@ -95,7 +95,7 @@ To stay focused, DropBoard deliberately does **not** try to be:
 
 _Updated 2026-07-24 — moved from brief to a working scaffold._
 
-- **Frontend** — a functional single-page app (create/join a board, drop text · links · files, live sync, end session) deploying to **GitHub Pages**: **https://alx-du.github.io/dropboard/**. It's backend-agnostic — one switch in [`web/config.js`](web/config.js) points it at a backend.
+- **Frontend** — a functional single-page app (create/join a board, drop text · links · files, live sync, end session) deploying to **GitHub Pages**: **https://ethical-tech-colab.github.io/dropboard/**. It's backend-agnostic — one switch in [`web/config.js`](web/config.js) points it at a backend.
 - **Backends (two implementations, pick one — see [docs/BACKEND_OPTIONS.md](docs/BACKEND_OPTIONS.md)):**
   - [`cloudflare/`](cloudflare/) — Workers + **Durable Objects** (WebSocket sync + TTL) + **R2** files. Wired as the default.
   - [`supabase/`](supabase/) — Postgres + **RLS** + Realtime + Storage + Edge Functions.
